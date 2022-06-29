@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
 
-class menuLinks
+class Base
 {
 
    MenuSearch()
@@ -38,4 +38,4 @@ MenuReportsLink()
 
 }
 
-export default menuLinks
+export default Base

@@ -4,13 +4,13 @@
 
 import homePage from './POM/homePage'
 import loginPage from './POM/loginPage'
-import menuLinks from './POM/menuLinks'
 import searchPage from './POM/searchPage'
+import Base from './POM/base'
 
 
 const lg = new loginPage()
 const hp = new homePage()
-const navlinks = new menuLinks()
+const bs = new Base()
 const sp = new searchPage()
 
 describe('Smoke', function()  {
@@ -38,8 +38,7 @@ describe('Smoke', function()  {
         lg.ClickOnSubmitBtn()
         lg.EnterPassword('Passsss')
         lg.ClickOnSubmitBtn()
-        cy.wait(3000)
-        cy.get('.humane').contains('Invalid email or password.')
+        cy.get('.humane',{ timeout: 3000 }).contains('Invalid email or password.')
   
   
       })
@@ -98,7 +97,7 @@ describe('Smoke', function()  {
 
 
 
-        navlinks.MenuSearch()    
+        bs.MenuSearch()    
         hp.ClickOnSearchQuery()
         hp.QuerySelectSuggestedSerach()
         cy.wait(6000)
@@ -125,20 +124,20 @@ describe('Smoke', function()  {
    
 
 
-    navlinks.MenuSearch()    
-    sp.ClickOnSearchBuilderBtn()
-    sp.sbPosition('QA{enter}')
-    sp.sbPositionDDL('Excluded')
-    sp.sbPosition('QA Automation{enter}')
-    sp.sbSkills('quality assurance{enter}')
-    sp.sbSkills('test planning{enter}')
-    sp.sbSkillsDDL('Required')
-    sp.sbSkills('manual testing{enter}')
-    sp.sbSkillsDDL('Excluded')
-    sp.sbSkills('Automation Testing{enter}')
-    sp.sbCompanyDDL('Excluded')
-    sp.sbCompany('Facebook{enter}')
-    sp.sbCompanyBtnBuild()
+    bs.MenuSearch()    
+    sp.OpenSearchBuilder()
+    sp.searchBuilder_enterValueForPosition('QA{enter}')
+    sp.searchBuilder_SelectPositionTipe('Excluded')
+    sp.searchBuilder_enterValueForPosition('QA Automation{enter}')
+    sp.searchBuilder_enterValueForSkills('quality assurance{enter}')
+    sp.searchBuilder_enterValueForSkills('test planning{enter}')
+    sp.searchBuilder_SelectSkillsTipe('Required')
+    sp.searchBuilder_enterValueForSkills('manual testing{enter}')
+    sp.searchBuilder_SelectSkillsTipe('Excluded')
+    sp.searchBuilder_enterValueForSkills('Automation Testing{enter}')
+    sp.searchBuilder_SelectCompanyTipe('Excluded')
+    sp.searchBuilder_enterValueForCompany('Facebook{enter}')
+    sp.BuildAndRunSearchBuilder()
 
 
     
